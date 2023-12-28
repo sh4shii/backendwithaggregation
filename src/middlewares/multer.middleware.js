@@ -2,7 +2,8 @@ import multer from "multer";
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, destinationDirectory);
+    const destinationPath = path.join(__dirname, "public", "temp");
+    cb(null, destinationPath);
   },
   filename: function (req, file, cb) {
     const uniqueIdentifier = Date.now() + "_" + Math.floor(Math.random() * 100 + 1);
